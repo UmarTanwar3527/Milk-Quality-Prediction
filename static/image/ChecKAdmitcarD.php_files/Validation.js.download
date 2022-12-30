@@ -1,0 +1,884 @@
+function setDisplay()
+{
+	if(navigator.appName=="Microsoft Internet Explorer")
+			hsdisplay="inline";
+	else		
+		hsdisplay="table-row";
+		
+		
+	return hsdisplay;
+}
+function checkSpecialWord(txtqry)
+{
+	var xtxtqry=txtqry.toLowerCase();
+	var flag=xtxtqry.search("delete");
+	//var xflag=xtxtqry.search("drop");
+	var yflag=xtxtqry.search("alter");
+	var sflag=xtxtqry.search("script");
+	var wflag=xtxtqry.search("window.open");
+	var hflag=xtxtqry.search("href");
+	
+	if(flag > -1)
+	{
+		alert("DELETE Word Not Allowed in Message");
+		return false;
+	}
+	/*
+	if(xflag > -1)
+	{
+		alert("DROP Word Not Allowed in Message");
+		return false;
+	}
+	*/
+	if(yflag > -1)
+	{
+		alert("ALTER Word Not Allowed in Message ");
+		return false;
+	}	
+	if(sflag > -1)
+	{
+		alert("Script Word Not Allowed in Message");
+		return false;
+	}	
+	if(wflag > -1)
+	{
+		alert("window.open Word Not Allowed in Message");
+		return false;
+	}	
+	if(hflag > -1)
+	{
+		alert("href Word Not Allowed in Message");
+		return false;
+	}	
+	
+	return true;	
+}
+
+function checkEmptyTEXT(ARGV,CVALUE)
+{
+	nm=document.getElementById(ARGV).value.replace(/^\s+/, '').replace(/\s+$/, '');
+	while(nm.indexOf("'")!=-1)
+	{
+		nm=nm.replace("'"," ");	
+	}
+
+	while(nm.indexOf("  ")!=-1)
+	{
+		nm=nm.replace("  "," ");	
+	}
+	nm=HSTrim(nm);
+ 	ln = nm.length;
+	if(ln==0)
+	{
+		alert(CVALUE+" Required");
+		document.getElementById(ARGV).value="";
+		document.getElementById(ARGV).style.borderColor="red";
+		return false;
+	}
+	if(!checkSpecialWord(nm))
+	{
+		document.getElementById(ARGV).value="";
+		document.getElementById(ARGV).style.borderColor="red";
+		return false;			
+	}
+	document.getElementById(ARGV).style.borderColor="#800000";
+	document.getElementById(ARGV).value=nm;
+	return true;
+}
+
+function checkEmptyTEXT2(ARGV,CVALUE,HDIV)
+{
+	nm=document.getElementById(ARGV).value.replace(/^\s+/, '').replace(/\s+$/, '');
+	while(nm.indexOf("'")!=-1)
+	{
+		nm=nm.replace("'"," ");	
+	}
+	while(nm.indexOf("  ")!=-1)
+	{
+		nm=nm.replace("  "," ");	
+	}
+	nm=HSTrim(nm);
+ 	ln = nm.length;
+	if(ln==0)
+	{
+		document.getElementById(HDIV).innerHTML="<font size='2' color='#ff0000'>"+CVALUE+" Required </font>";
+		document.getElementById(ARGV).value="";
+		document.getElementById(ARGV).style.borderColor="red";
+		return false;
+	}
+	if(!checkSpecialWord(nm))
+	{
+		document.getElementById(ARGV).value="";
+		document.getElementById(ARGV).style.borderColor="red";
+		return false;			
+	}
+
+	document.getElementById(ARGV).style.borderColor="#800000";
+	document.getElementById(ARGV).value=nm;
+	document.getElementById(HDIV).innerHTML="";
+	return true;
+}
+
+function compValue(ARGV1,ARGV2,HDIV,CVALUE)
+{
+	v1=	document.getElementById(ARGV1).value;
+	v2= document.getElementById(ARGV2).value;
+	
+
+	if(v1!=v2)
+	{
+		document.getElementById(HDIV).innerHTML="<font size='2' color='#ff0000'>"+CVALUE+"  </font>";
+		document.getElementById(ARGV1).style.borderColor="red";
+		document.getElementById(ARGV2).style.borderColor="red";
+		
+		return false;
+	}
+	document.getElementById(ARGV1).style.borderColor="#800000";
+	document.getElementById(ARGV2).style.borderColor="#800000";
+	
+
+	document.getElementById(HDIV).innerHTML="";
+	return true;
+}
+ 
+function checkNumeric(ARGV,CVALUE)
+{
+	vl=document.getElementById(ARGV).value;
+	if (vl == null || !vl.toString().match(/^[-]?\d*\.?\d*$/) ||vl.charAt(0)=="." || vl.charAt(0)=="-") 
+	{
+		alert(CVALUE+"\nRequired Only numeric Digits")
+		document.getElementById(ARGV).style.borderColor="red";
+		document.getElementById(ARGV).value="";
+		return false;
+	}
+	
+	document.getElementById(ARGV).style.borderColor="#800000";
+	return true;
+}		
+function checkNumeric2(ARGV,CVALUE,HDIV)
+{
+	vl=document.getElementById(ARGV).value;
+	if (vl == null || !vl.toString().match(/^[-]?\d*\.?\d*$/) ||vl.charAt(0)=="." || vl.charAt(0)=="-") 
+	{
+
+		document.getElementById(HDIV).innerHTML="<font size='2' color='#ff0000'>"+CVALUE+" Required Only numeric Digits </font>";
+		document.getElementById(ARGV).style.borderColor="red";
+		document.getElementById(ARGV).value="";
+		return false;
+	}
+	document.getElementById(HDIV).innerHTML="";
+	document.getElementById(ARGV).style.borderColor="#800000";
+	return true;
+}		
+
+function checkALPHA(ARGV)
+{
+	document.getElementById(ARGV).value=document.getElementById(ARGV).value.replace(/^\s+/, '').replace(/\s+$/, '')
+	document.getElementById(ARGV).value=document.getElementById(ARGV).value.toUpperCase();
+	nm=document.getElementById(ARGV).value;
+	ln = nm.length;
+	var flag;
+	flag=1;
+
+
+
+	for(i=0;i<ln;i++)
+	{
+		if((nm.charCodeAt(i)>=65 && nm.charCodeAt(i)<=90) || (nm.charCodeAt(i)>=97 && nm.charCodeAt(i)<=122)|| nm.charCodeAt(i)==32	)
+		{						  
+			flag = 0;
+		}
+		else
+		{
+			flag = 1;
+			break;
+		}
+	}
+
+
+	if(flag==1)
+	{		
+		alert("Only Alphabates allowed / Fill the Entry");
+		document.getElementById(ARGV).value="";
+		document.getElementById(ARGV).style.borderColor="red";
+		return false;
+	}
+	return true;
+}
+function checkALPHA2(ARGV,HDIV)
+{
+	document.getElementById(ARGV).value=document.getElementById(ARGV).value.replace(/^\s+/, '').replace(/\s+$/, '')
+	document.getElementById(ARGV).value=document.getElementById(ARGV).value.toUpperCase();
+	nm=document.getElementById(ARGV).value;
+	ln = nm.length;
+	var flag;
+	flag=1;
+
+
+
+	for(i=0;i<ln;i++)
+	{
+		if((nm.charCodeAt(i)>=65 && nm.charCodeAt(i)<=90) || (nm.charCodeAt(i)>=97 && nm.charCodeAt(i)<=122)|| nm.charCodeAt(i)==32	)
+		{						  
+			flag = 0;
+		}
+		else
+		{
+			flag = 1;
+			break;
+		}
+	}
+
+
+	if(flag==1)
+	{		
+		document.getElementById(HDIV).innerHTML="<font size='2' color='#ff0000'>  Only Alphabates allowed / Fill the Entry </font>";
+		document.getElementById(ARGV).value="";
+		document.getElementById(ARGV).style.borderColor="red";
+		return false;
+	}
+	document.getElementById(HDIV).innerHTML="";
+	return true;
+}
+
+function checkALPHA3(ARGV,CVALUE,HDIV)
+{
+	document.getElementById(ARGV).value=document.getElementById(ARGV).value.replace(/^\s+/, '').replace(/\s+$/, '')
+	document.getElementById(ARGV).value=document.getElementById(ARGV).value.toUpperCase();
+	nm=document.getElementById(ARGV).value;
+	ln = nm.length;
+	var flag;
+	flag=1;
+
+
+
+	for(i=0;i<ln;i++)
+	{
+		if((nm.charCodeAt(i)>=65 && nm.charCodeAt(i)<=90) || (nm.charCodeAt(i)>=97 && nm.charCodeAt(i)<=122)|| nm.charCodeAt(i)==32	)
+		{						  
+			flag = 0;
+		}
+		else
+		{
+			flag = 1;
+			break;
+		}
+	}
+
+
+	if(flag==1)
+	{		
+		document.getElementById(HDIV).innerHTML="<font size='2' color='#ff0000'>"+ CVALUE +"  Only Alphabates allowed / Fill the Entry </font>";
+		document.getElementById(ARGV).value="";
+		document.getElementById(ARGV).style.borderColor="red";
+		return false;
+	}
+	document.getElementById(HDIV).innerHTML="";
+	return true;
+}
+
+function checkALPHA4(ARGV,CVALUE,HDIV)
+{
+	document.getElementById(ARGV).value=document.getElementById(ARGV).value.replace(/^\s+/, '').replace(/\s+$/, '')
+	document.getElementById(ARGV).value=document.getElementById(ARGV).value.toUpperCase();
+	nm=document.getElementById(ARGV).value;
+	ln = nm.length;
+	var flag;
+	flag=0;
+
+
+
+	for(i=0;i<ln;i++)
+	{
+	
+		if((nm.charCodeAt(i)>=48 && nm.charCodeAt(i)<=57) || (nm.charCodeAt(i)>=65 && nm.charCodeAt(i)<=90) || (nm.charCodeAt(i)>=97 && nm.charCodeAt(i)<=122) || nm.charCodeAt(i)==32 || nm.charCodeAt(i)==44 || nm.charCodeAt(i)==46)
+		{						  
+			flag = 0;
+		}
+		else
+		{
+			flag = 1;
+			break;
+		}
+	}
+
+
+	if(flag==1)
+	{		
+		document.getElementById(HDIV).innerHTML="<font size='2' color='#ff0000'>"+ CVALUE +"  Only Alphabates allowed / Fill the Entry </font>";
+		document.getElementById(ARGV).value="";
+		document.getElementById(ARGV).style.borderColor="red";
+		return false;
+	}
+	document.getElementById(HDIV).innerHTML="";
+	return true;
+}
+
+function checkStringNoSpace(ARGV)
+{
+	nm=document.getElementById(ARGV).value;
+	nm=nm.toUpperCase();
+	document.getElementById(ARGV).value=nm;
+	ln = nm.length;
+	var flag;
+	flag=1;
+
+
+	for(i=0;i<ln;i++)
+	{
+		if((nm.charCodeAt(i)>=65 && nm.charCodeAt(i)<=90))
+			flag = 0;
+		else
+		{
+			flag = 1;
+			break;
+		}
+	}
+
+	if(flag==1)
+	{		
+		alert("Only Alphabates allowed \n Space not allowed \n  Fill the Entry");
+		document.getElementById(ARGV).value="";
+		document.getElementById(ARGV).style.borderColor="red";
+		return false;
+	}
+	return true;
+}
+
+function checkContactNo(ARGV,CVALUE)
+{
+	vl=document.getElementById(ARGV).value;
+	if (vl == "" || !vl.toString().match(/^[-]?\d*\.?\d*$/)) 
+	{
+		alert(CVALUE+"\nRequired(With only Numeric)");
+		document.getElementById(ARGV).style.borderColor="red";
+		document.getElementById(ARGV).value="";
+		return false;
+	}
+	document.getElementById(ARGV).style.borderColor="white";
+	return true;	
+}
+function checkMobile(ARGV,CVALUE)
+{
+	vl=document.getElementById(ARGV).value;
+	if (vl == null || !vl.toString().match(/^[-]?\d*\.?\d*$/)) 
+		{
+			alert(CVALUE+"\nRequired Only numeric Digits")
+			document.getElementById(ARGV).style.borderColor="red";
+			document.getElementById(ARGV).value="";
+			return false;
+		}
+	vl=parseInt(vl)
+
+	if(vl<5000000001 || vl>9999999999)
+	{
+		alert("Invalid  "+CVALUE)
+		document.getElementById(ARGV).style.borderColor="red";
+		document.getElementById(ARGV).value="";
+		return false;
+	}
+		
+	document.getElementById(ARGV).style.borderColor="#000033";
+	return true;
+}
+
+function checkMobile2(ARGV,CVALUE,HDIV)
+{
+	vl=document.getElementById(ARGV).value;
+	if (vl == null || !vl.toString().match(/^[-]?\d*\.?\d*$/)) 
+		{
+		
+			document.getElementById(HDIV).innerHTML="<font size='2' color='#ff0000'>"+ CVALUE+"\nRequired Only numeric Digits</font>";
+			document.getElementById(ARGV).style.borderColor="red";
+			document.getElementById(ARGV).value="";
+			return false;
+		}
+	vl=parseInt(vl)
+
+	if(vl<5000000001 || vl>9999999999)
+	{
+	//	alert("Invalid  "+CVALUE)
+		document.getElementById(HDIV).innerHTML="<font size='2' color='#ff0000'> Invalid "+ CVALUE+"</font>";
+		
+		document.getElementById(ARGV).style.borderColor="red";
+		document.getElementById(ARGV).value="";
+		return false;
+	}
+	document.getElementById(HDIV).innerHTML="";	
+	document.getElementById(ARGV).style.borderColor="#000033";
+	return true;
+}
+
+function checkNoSpace(ARGV,CVALUE)
+{
+	nm=document.getElementById(ARGV).value;
+	nm=nm.toUpperCase();
+	document.getElementById(ARGV).value=nm;
+	ln = nm.length;
+	var flag;
+	flag=1;
+
+
+	for(i=0;i<ln;i++)
+	{
+		if(nm.charCodeAt(i)!=32)
+			flag = 0;
+		else
+		{
+			flag = 1;
+			break;
+		}
+	}
+
+	if(flag==1)
+	{		
+		alert(CVALUE +" Space not allowed \n  Fill the Entry");
+		document.getElementById(ARGV).value="";
+		document.getElementById(ARGV).style.borderColor="red";
+		return false;
+	}
+	return true;
+}
+function checkNoSpace2(ARGV,CVALUE,HDIV)
+{
+	nm=document.getElementById(ARGV).value;
+	nm=nm.toUpperCase();
+	document.getElementById(ARGV).value=nm;
+	ln = nm.length;
+	var flag;
+	flag=1;
+
+
+	for(i=0;i<ln;i++)
+	{
+		if(nm.charCodeAt(i)!=32)
+			flag = 0;
+		else
+		{
+			flag = 1;
+			break;
+		}
+	}
+
+	if(flag==1)
+	{		
+		alert(CVALUE +" Space not allowed \n  Fill the Entry");
+		document.getElementById(HDIV).innerHTML="<font size='2' color='#ff0000'> "+CVALUE +" Space not allowed \n  Fill the Entry";
+		document.getElementById(ARGV).value="";
+		document.getElementById(ARGV).style.borderColor="red";
+		return false;
+	}
+	document.getElementById(HDIV).innerHTML="&nbsp;";
+	return true;
+}
+
+
+		function CheckDate(yy,mm,dd)
+			{
+					var maxD,yr,mn,dy;
+					maxD=0;
+					yr=1900+parseInt(document.getElementById(yy).value);
+					var mont=document.getElementById(mm).value;
+					
+					if(mont.substring(0,1)=="0")
+						mont=mont.substring(1,2);
+					mn=parseInt(mont);
+					var ddy=document.getElementById(dd).value;
+					
+					if(ddy.substring(0,1)=="0")
+						ddy=ddy.substring(1,2);
+					dy=parseInt(ddy);					
+					var ar=new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
+					if(mn>12 || mn<1 || dy==0 || yr==1900)
+					{
+						alert("Please Enter Valid Date");
+						document.getElementById(mm).focus();			
+						return false;
+					}
+					mn=mn-1;
+					var mnt=ar[mn];
+
+					
+
+					//dy=parseInt(document.getElementById(dd).value);
+					
+					switch(mnt)
+					{
+						case "Jan":
+						case "Mar":
+						case "May":
+						case "Jul":
+						case "Aug":
+						case "Oct":
+						case "Dec":
+							maxD = 31;
+							break;
+						case "Apr":
+						case "Jun":
+						case "Sep":
+						case "Nov":
+							maxD = 30;
+							break;
+						default:
+								if((yr%100 == 0 && yr % 400 == 0) || yr % 4 == 0)
+									maxD = 29;
+								else
+									maxD = 28;
+					}
+//					alert(dy +"\n"+maxD);
+					if(dy>maxD)
+					{
+						alert("Please Enter Valid Date");
+						document.getElementById(dd).focus();			
+						return false;
+					}	
+				return true;
+				
+			}
+			
+		
+	function date_Diff(endDate,startDate)
+	{
+		month = new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
+		dt=endDate.split("/");
+		for(i=0;i<month.length;i++)
+		{
+			if(month[i]==dt[1])
+			{
+				j=i+1;
+				endDate=dt[0]+"-"+j+"-"+dt[2];
+			}
+		}
+		dt=startDate.split("/");
+		for(i=0;i<month.length;i++)
+		{
+			if(month[i]==dt[1])
+			{
+				j=i+1;
+				startDate=dt[0]+"-"+j+"-"+dt[2];
+			}
+		}
+		
+		startDate= Date.parse(startDate); 
+		endDate= Date.parse(endDate); 
+		if(endDate>=startDate)
+		{
+			return true;	
+		}
+		else
+		{
+			return false;	
+		}
+	}
+	
+	function toDay_Comp(today,startDate)
+	{
+		tdt=today.split("-");
+		sdt=startDate.split("-");
+		if(sdt[0]>tdt[0])
+		{
+			alert("select Valid Year");
+			return false;
+		}
+		
+		if(sdt[1]>tdt[1])
+		{
+			alert("select Valid Month");
+			return false;
+		}
+		if(sdt[1]==tdt[1])
+		{
+			if(sdt[2]>tdt[2])
+			{
+				alert("select Valid Date");
+				return false;
+			}
+		}
+		return true;
+	}
+	function emailcheck(ARGV,msg) 
+	{
+		var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+	   	var address = document.getElementById(ARGV).value;
+	   	if(reg.test(address) == false && address!="") 
+		{
+      		alert('Invalid '+msg);
+			document.getElementById(ARGV).style.borderColor="red";
+      		return false;
+		}
+		document.getElementById(ARGV).style.borderColor="#800000";
+		return true;
+	}
+	function emailcheck2(ARGV,CVALUE,HDIV) 
+	{
+		var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+	   	var address = document.getElementById(ARGV).value;
+	   	if(reg.test(address) == false && address!="") 
+		{
+        	document.getElementById(HDIV).innerHTML="<font size='2' color='#ff0000'> Invalid "+ CVALUE+"</font>";
+			document.getElementById(ARGV).style.borderColor="red";
+      		return false;
+		}
+		document.getElementById(ARGV).style.borderColor="#800000";
+		document.getElementById(HDIV).innerHTML="";
+		return true;
+	}
+	function checkSelect(ARGV,CVALUE,HDIV) 
+	{
+	   	var csel = document.getElementById(ARGV).value;
+	   	if(csel=="999") 
+		{
+        	document.getElementById(HDIV).innerHTML="<font size='2' color='#ff0000'>   "+ CVALUE+" Required</font>";
+			document.getElementById(ARGV).style.borderColor="red";
+      		return false;
+		}
+		document.getElementById(ARGV).style.borderColor="#800000";
+		document.getElementById(HDIV).innerHTML="";
+		return true;
+	}
+	
+	function checkTextDate(ARGV)
+		{
+			strValue = ARGV.value;
+			var objRegExp = /^\d{1,2}(\-|\/|\.)\d{1,2}\1\d{4}$/
+			if(strValue=="" || !objRegExp.test(strValue))
+			{
+				ARGV.value="";
+				return false;				
+			}
+			else
+			{
+				strSeparator="";
+				for (i=0;i<strValue.length;i++)
+				{
+					if(!(strValue.charAt(i)>=0 && strValue.charAt(i)<=9))
+					{
+						strSeparator=	strValue.charAt(i);
+					}
+				}
+				var arrayDate = strValue.split(strSeparator); 
+				if(arrayDate[0].length==1)
+				{	
+					arrayDate[0]="0"+arrayDate[0];
+				}
+				if(arrayDate[1].length==1)
+				{	
+					arrayDate[1]="0"+arrayDate[1];
+				}
+				//create a lookup for months not equal to Feb.
+				var arrayLookup = { '01' : 31,'03' : 31, 
+									'04' : 30,'05' : 31,
+									'06' : 30,'07' : 31,
+									'08' : 31,'09' : 30,
+									'10' : 31,'11' : 30,'12' : 31}
+				var intDay = parseInt(arrayDate[0],10); 
+			
+				//check if month value and day value agree
+				if(arrayLookup[arrayDate[1]] != null) 
+				{
+				  if(intDay <= arrayLookup[arrayDate[1]] && intDay != 0)
+				  {
+				    ARGV.value=arrayDate[0]+"/"+arrayDate[1]+"/"+arrayDate[2];
+					return true;
+				   }
+				}
+								
+				var intMonth = parseInt(arrayDate[1],10);
+				if (intMonth == 2) 
+				{ 
+					var intYear = parseInt(arrayDate[2]);
+				   	if (intDay > 0 && intDay < 29) 
+				   	{
+					  	ARGV.value=arrayDate[0]+"/"+arrayDate[1]+"/"+arrayDate[2];
+						return true;
+				   	}
+				   	else if (intDay == 29) 
+				   	{
+					 	if ((intYear % 4 == 0) && (intYear % 100 != 0) || (intYear % 400 == 0)) 
+					 	{
+						  // year div by 4 and ((not div by 100) or div by 400) ->ok
+		  				 	ARGV.value=arrayDate[0]+"/"+arrayDate[1]+"/"+arrayDate[2];
+							return true;
+					 	}   
+				   	}
+				}
+			} 
+	
+			ARGV.value="";
+			return false; 
+			
+		}
+		function checkSpecialChar2(ARGV,CVALUE,HDIV)
+		{
+				nm=document.getElementById(ARGV).value;
+				for(i=0;i<nm.length;i++)
+				{
+					if((nm.charCodeAt(i)>=65 && nm.charCodeAt(i)<=90) || (nm.charCodeAt(i)>=97 && nm.charCodeAt(i)<=122)|| nm.charCodeAt(i)==32 || (nm.charCodeAt(i)>=48 && nm.charCodeAt(i)<=57))
+					{
+						fg=0;
+					}
+					else
+					{
+						fg=1;
+					}
+					if(fg==1)
+					{
+						document.getElementById(HDIV).innerHTML="<font size='2' color='#ff0000'>  Special Character/Decimal value are not allowed in "+ CVALUE+"</font>";
+						//alert("Special Character are not allowed in "+CVALUE);
+						//document.getElementById(ARGV).value="";
+						document.getElementById(ARGV).style.borderColor="red";
+						return false;
+					}
+				}
+				document.getElementById(HDIV).innerHTML="";
+				return true;
+		}
+	function checkSpecialChar(ARGV,CVALUE,HDIV)
+		{
+				nm=document.getElementById(ARGV).value;
+				for(i=0;i<nm.length;i++)
+				{
+					if((nm.charCodeAt(i)>=65 && nm.charCodeAt(i)<=90) || (nm.charCodeAt(i)>=97 && nm.charCodeAt(i)<=122)|| nm.charCodeAt(i)==32 || (nm.charCodeAt(i)>=48 && nm.charCodeAt(i)<=57))
+					{
+						fg=0;
+					}
+					else
+					{
+						fg=1;
+					}
+					if(fg==1)
+					{
+						alert("Special Character are not allowed in "+CVALUE);
+						//document.getElementById(ARGV).value="";
+						document.getElementById(ARGV).style.borderColor="red";
+						return false;
+					}
+				}
+				return true;
+		}	
+	function getPercentage(ARGV1,ARGV2)
+	{
+		
+		avalue1=document.getElementById(ARGV1).value;
+		avalue2=document.getElementById(ARGV2).value;
+		if(avalue1=="" || avalue2=="")
+		{
+			avalue3="";
+			return avalue3;
+		}
+		
+		avalue1=parseInt(avalue1);
+		avalue2=parseInt(avalue2);
+		
+		
+		avalue3=(avalue2/avalue1)*100;
+		avalue3=avalue3.toFixed(2);
+	
+		return avalue3
+		
+	}
+	function SpReplace(FormName)
+	{
+		var y = document.getElementById(FormName).elements; 
+		for(i=0;i<y.length;i++)
+		{
+			if(y[i].type=="text")
+			{
+				tid=y[i].value
+				for(j=0;j<tid.length;j++)
+				{
+					x=tid.indexOf("'");
+					if(x>=0)
+					{
+						tid=tid.replace("'"," ");
+					}
+					else
+					{
+						break;
+					}
+				}
+				for(j=0;j<tid.length;j++)
+				{
+				 	tid=tid.replace("  "," ");
+				 }
+				
+				y[i].value= tid
+			}
+		}
+	}
+	
+	function MouseEfect(BANAM,ARGV)
+		{
+			if(ARGV==1)
+			{
+				document.getElementById(BANAM).style.background="#ff9900";
+			}
+			if(ARGV==2)
+			{
+				document.getElementById(BANAM).style.background="#FFD9A3";
+			}
+			if(ARGV==3)
+			{
+				document.getElementById(BANAM).style.background="yellow";
+			}
+			if(ARGV==4)
+			{
+				document.getElementById(BANAM).style.background="#FFD9A3";
+			}
+		}	
+		
+	function DECODE(Str_Message) 
+	{      
+		SIMBOLOS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	    Len_Simbolos = SIMBOLOS.length;   
+		Len_Str_Message = Str_Message.length;      
+        Str_Decoded_Message = "";      
+        for (Position = 0; Position < Len_Str_Message; Position++)
+		  {          
+            Plus_Modulo_Simbolos = 0;          
+            Byte_To_Be_Decoded = Str_Message.charAt(Position);          
+            if (Byte_To_Be_Decoded > 0)
+			 {              
+                Plus_Modulo_Simbolos = Byte_To_Be_Decoded;              
+                Position++;              
+                Byte_To_Be_Decoded = Str_Message.charAt(Position);          
+           	 }          
+     
+            Byte_Decoded = 0;          
+            for (SecondPosition = 0; SecondPosition < Len_Simbolos; SecondPosition++) 
+			{              
+                Byte_To_Be_Compared = SIMBOLOS.charAt(SecondPosition);              
+                if (Byte_To_Be_Decoded == Byte_To_Be_Compared)
+				 {                  
+                    Byte_Decoded = SecondPosition;              
+             	  }          
+            }          
+            Byte_Decoded = parseInt(Plus_Modulo_Simbolos * Len_Simbolos) + Byte_Decoded; 
+
+          	  Ascii_Num_Byte_To_Decode = String.fromCharCode(Byte_Decoded);   
+ 	          Str_Decoded_Message = Str_Decoded_Message + Ascii_Num_Byte_To_Decode;      
+        }      
+        return Str_Decoded_Message;  
+    } 
+	
+	function Ltrim(ARGV)
+	{
+		var l=0;
+		while(l < ARGV.length && ARGV[l] == ' ')
+		{	l++; }
+		return ARGV.substring(l, ARGV.length);
+	}
+	
+	function Rtrim(ARGV)
+	{
+		var r=ARGV.length -1;
+		while(r > 0 && ARGV[r] == ' ')
+		{	r-=1;	}
+		return ARGV.substring(0, r+1);
+	}
+	function HSTrim(ARGV)
+	{
+		 hs=Ltrim(ARGV);
+		 ARGV=Rtrim(hs);
+		 return ARGV;
+	}

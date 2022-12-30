@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Major Project | Milk Quality Prediction</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1 , shrink-to-fit=no">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="{{ url_for('static',filename = 'css/bootstrap.min.css')  }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename = 'css/style.css')  }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename = 'css/owl.theme.default.min.css')  }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename = 'css/jquery-ui.css')  }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename = 'css/aos.css')  }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename = 'css/bootstrap.min.css')  }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename = 'css/owl.carousel.min.css')  }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static',filename =' fonts/icomoon/style.css')}}">
+    <link href="{{ url_for('static',filename = 'css/jquery.fancybox.min.css')  }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+    <link href="{{ url_for('static',filename = 'css/jquery.mb.YTPlayer.min.css')  }}" rel="stylesheet" media="all"
+        type="text/css">
+    <link href="{{ url_for('static',filename = 'css/bootstrap-datepicker.css')  }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename = 'fonts/flaticon/font/flaticon.css')  }}" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+
+    <style>
+        .form1 {
+            /* background: #000000; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: fit-content;
+            flex-direction: column;
+            /* width: 500px; */
+            border-left-width: 250px;
+            border: 2px solid black;
+            /* padding: 30px; */
+            background: white;
+            ;
+            border-radius: 25px;
+            /* margin-right: 100px; */
+        }
+
+        .a {
+            color: black;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+
+<body>
+    <nav class="navbar navbar-expand-lg " style="background-color: #e3f2fd;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto ">
+                <div class="container">
+                    <a class="navbar-brand " href="#">
+                        <img src="/static/image/PIET logo with tagline.jpg" alt="Logo" width="150" height="50">
+                    </a>
+                </div>
+            </ul>
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/aboutus">About Us</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/major">Major Project</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/minor">Minor Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/gallery">Gallery</a>
+                </li>
+            </ul>
+
+        </div>
+        <hr>
+    </nav>
+    <br />
+    <center>
+        <h2>MAJOR PROJECT</h2>
+        <br />
+    </center>
+    <br />
+    <div style="margin-top:30px;">
+        <center>
+            <h2 style="font-size: 40px; color: rgb(155, 155, 223) ">
+                <b> <i> Milk Quality Prediction</i></b>
+            </h2>
+        </center>
+
+
+        <br><br>
+        <img align="right" src="/static/image/milk.jpg" class="img-fluid"
+            style="height: 350px; width: 500px; border-radius: 25px;">
+
+        <p style="font-size:30px;"><i>About dataset:</i></p>
+        <p>
+        <ul>
+            <li>This dataset is manually collected from observations. It helps us to build machine learning models to
+                predict the quality of milk. </li>
+
+
+            <li> This dataset consists of 7 independent variables ie pH, Temperature, Taste, Odor, Fat and Turbidity.
+            </li>
+            <li>Generally, the Grade or Quality of the milk depends on these parameters. </li>
+            <li>These parameters play a vital role in the predictive analysis of the milk.</li>
+        </ul>
+
+        </p>
+
+        <p style="font-size:30px;"><i>Usage:</i></p>
+
+        The Target variable is nothing but the Grade of the milk. It can be<br>
+        <ul>
+            <li>Low (Bad)</li>
+            <li>Medium (Moderate)</li>
+            <li>High (Good)</li>
+        </ul>
+
+        Temperature and ph are given their actual values in the dataset.<br>
+        We have to perform data preprocessing, and data augmentation techniques <br>
+        to build statistical and predictive models to predict the quality of the milk.
+
+        <p style="font-size:30px;"><i>Inspiration:</i></p>
+        To leverage the benefits of machine learning in the dairy industry.
+    </div>
+    <br>
+    <div class="card-body">
+        <h5 class="card-title" ; style="text-align:center">Model Deployment</h5>
+        <br>
+        <!-- Main Input For Receiving Query to our ML -->
+        <div class="form1" style="border-radius: 25px;background-color: lightcyan;">
+            <form action="{{ url_for('predict')}} " method="get" class="row g-3 my-4">
+                <center>
+                    <div class="col-2" style="color: #000; border-radius: 25px;">
+                        <center>
+                            <label for="floatingInput" class="form-label">pH</label>
+                            <input width: fit-content; type="number" class="form-control" id="pH" name="pH" step="any"
+                                min="3" max="10" required="required" placeholder="Enter your pH level">
+                        </center>
+                    </div>
+                </center>
+                <br>
+                <br>
+
+                <center>
+
+                    <div class="col-2" style="color: #000;">
+                        <center>
+                            <label for="floatingInput" class="form-label">Temprature</label>
+                            <input type="number" class="form-control" id="Temprature" name="Temprature" step="any"
+                                min="30" max="90" required="required" placeholder="Enter your Temprature">
+                        </center>
+                    </div>
+                </center>
+
+                <br>
+                <br>
+                <center>
+                    <div class="col-2" style="color: #000;">
+                        <label for="floatingInput" class="form-label">Has a Taste</label>
+                        <select id="Taste" name="Taste" class="form-select" required>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                </center>
+                <br>
+                <br>
+                <center>
+                    <div class="col-2" style="color: #000;">
+                        <label for="floatingInput" class="form-label">Has a Odor</label>
+                        <select id="Odor" name="Odor" step="any" class="form-select" required>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                </center>
+                <br>
+                <br>
+                <center>
+                    <div class="col-2" style="color: #000;">
+                        <label for="floatingInput" class="form-label">Is Fat</label>
+                        <select id="Fat" name="Fat" step="any" class="form-select" required>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                </center>
+                <br>
+                <br>
+                <center>
+
+                    <div class="col-2" style="color: #000;">
+                        <label for="floatingInput" class="form-label">Has a Turbidity</label>
+                        <select id="Turbidity" name="Turbidity" step="any" class="form-select" required>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                </center>
+
+                <br><br>
+                <center>
+
+                    <div class="col-2" style="color: #000;">
+                        <center>
+                            <label for="floatingInput" class="form-label">Colour</label>
+                            <center>
+                                <input type="number" class="form-control" id="Colour" name="Colour" step="any"
+                                    required="required" min="240" max="260" placeholder="Enter the Colour">
+                            </center>
+                    </div>
+                </center>
+
+                <br>
+                <br>
+                <center>
+
+                    <div class="col-md-4" style="color: #000;">
+                        <label for="inputState" class="form-label">
+                            <center> Choose a Model</center>
+                        </label>
+                        <center>
+                            <select id="Model" name="Model" step="any" class="form-select" required>
+                                <option selected>Random Forest Classifier</option>
+                                <option>Decision Tree Classifier</option>
+                                <option>KNN Classifier</option>
+                                <option>SVM Classifier</option>
+                                <option>Naive Bayes Classifier</option>
+                            </select>
+                        </center>
+                    </div>
+                </center>
+
+                <br>
+                <br>
+
+                <div class="col-12">
+                    <center>
+                        <button type="submit" value="NB" name="NB" class="btn btn-outline-primary">Submit</button>
+                    </center>
+                </div>
+                <br>
+            </form>
+
+            <p style="color: black;">
+                {{prediction_text}}
+                {{extra_text}}
+                {{accuracy_text}}
+            </p>
+        </div>
+
+
+
+    </div>
+
+
+    </div>
+    </div>
+    </div>
+
+    <br>
+    <br><br>
+    <center>
+        <div class="container">
+            <div class="row">
+                <center>
+                    <div class="col-xs-12 col-md-4">
+                        <div class="card mb-3" style=" border-radius: 25px ;">
+                            <div class="card" style="  border-radius: 25px ; background-color: lightcyan;">
+                                <p class="card-text">
+                                    <center><b>Model Deployment QR Code:</b></center>
+                                </p>
+                                <img style="max-height: 350px; border-radius: 25px;"
+                                    src="{{ url_for('static',filename = 'image/milkqualityprediction.png')  }}"
+                                    class="card-img-top" alt="...">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Milk Quality Prediction</h5>
+                                    <p class="card-text" style="text-align: left;">
+                                        <li style="text-align: left;">This modal is devloped by using these following
+                                            modals:
+                                            <ol>
+                                                <li>Nave Bayse Modal</li>
+                                                <li>Decision Tree Clacification Modal</li>
+                                                <li>KNN Clasification Modal</li>
+                                                <li>Random Forest Modal</li>
+                                                <li>Support Vector Machine Modal</li>
+                                            </ol>
+                                        </li>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </center>
+            </div>
+        </div>
+    </center>
+    <br><br>
+    <div class="col-md-12"></div>
+    <center>
+        <h3 class="section-title" style="text-align: center; color:black;">Sponsored By</h3>
+    </center>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-4">
+                <div class="card mb-3" style="border-radius: 25px;">
+
+                    <div class="card" style="border-radius: 25px;">
+                        <img style="max-height: 200px; border-radius: 25px;"
+                            src="{{ url_for('static',filename = 'image/AICTEIdeaLabFooterLogo.png')  }}"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title" style="text-align:center">IDEA LAB</h5>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-md-4">
+                <div class="card mb-3" style="border-radius: 25px;">
+
+                    <div class="card" style="border-radius: 25px;">
+                        <img style="max-height: 200px; border-radius: 25px;"
+                            src="{{ url_for('static',filename = 'image/nbanew.png')  }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title" style="text-align:center">NBA</h5>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-10 col-md-3">
+                <div class="card mb-3" style="border-radius: 25px;">
+
+                    <div class="card" style="border-radius: 25px;">
+                        <img style="max-height: 200px; border-radius: 25px;"
+                            src="{{ url_for('static',filename = 'image/aicte-logo.png')  }}" class="card-img-top"
+                            alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title" ; style="text-align:center; color:black;">AICTE MODROB DEEP LEARNING
+                                LAB</h5>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <script src="{{ url_for('static',filename = 'js/bootstrap.bundle.min.js')  }}"></script>
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                crossorigin="anonymous"></script>
+
+</body>
+
+</html>
