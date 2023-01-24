@@ -88,4 +88,4 @@ def predict():
       return render_template('major.html', prediction_text='The Milk Grade is Low', extra_text =" -- Prediction by " + Model , accuracy_text=' -- Accuracy of Model is : {}'.format(accr))
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0',port=8080)
