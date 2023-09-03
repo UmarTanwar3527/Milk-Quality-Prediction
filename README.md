@@ -1,5 +1,8 @@
 # Milk Quality Prediction
 ![Python](https://img.shields.io/badge/python-v3.8+-blue.svg)
+<a href="https://html.spec.whatwg.org/multipage/" target="_blank">
+  <img src="https://img.shields.io/badge/HTML-HTML5-orange" alt="HTML Version">
+</a>
 
 Deployment Link:- https://milkqualityprediction.up.railway.app
 -> curenty unavalable
