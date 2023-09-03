@@ -3,7 +3,7 @@
 [![HTML Badge](https://img.shields.io/badge/HTML-HTML5-orange)](https://html.spec.whatwg.org/multipage/)  
 ![Flask Badge](https://img.shields.io/badge/Flask-1.1.2-blue)  
 
-Deployment Link:- https://milkqualityprediction.up.railway.app
+[Deployment Link](https://milkqualityprediction.up.railway.app)
 -> curenty unavalable
 
 Predicting milk quality using machine learning algorithms.
