@@ -1,11 +1,8 @@
-Milk Quality Prediction Machine Learning 
+# Milk Quality Prediction
+![Python](https://img.shields.io/badge/python-v3.8+-blue.svg)
+
 Deployment Link:- https://milkqualityprediction.up.railway.app
 -> curenty unavalable
-
-# Milk Quality Prediction
-
-![Python](https://img.shields.io/badge/python-v3.8+-blue.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
 
 Predicting milk quality using machine learning algorithms.
 
@@ -47,6 +44,7 @@ Before you begin, ensure you have met the following requirements:
    git clone https://github.com/UmarTanwar3527/Milk-Quality-Prediction.git
 
 ## Installation for the required Python libraries:
+   ```bash
   pip install -r requirements.txt
 
 ## Contributing
