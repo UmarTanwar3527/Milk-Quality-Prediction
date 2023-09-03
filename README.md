@@ -1,7 +1,7 @@
 # Milk Quality Prediction
-![Python](https://img.shields.io/badge/python-v3.8+-blue.svg)
-[![HTML Badge](https://img.shields.io/badge/HTML-HTML5-orange)](https://html.spec.whatwg.org/multipage/)
-![Flask Badge](https://img.shields.io/badge/Flask-1.1.2-blue)
+![Python](https://img.shields.io/badge/python-v3.8+-blue.svg)  
+[![HTML Badge](https://img.shields.io/badge/HTML-HTML5-orange)](https://html.spec.whatwg.org/multipage/)  
+![Flask Badge](https://img.shields.io/badge/Flask-1.1.2-blue)  
 
 Deployment Link:- https://milkqualityprediction.up.railway.app
 -> curenty unavalable
