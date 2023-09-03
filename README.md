@@ -39,20 +39,12 @@ Before you begin, ensure you have met the following requirements:
 ## Installation
 
 1. Clone the repository:
-
    ```bash
    git clone https://github.com/UmarTanwar3527/Milk-Quality-Prediction.git
 
 ## Installation for the required Python libraries:
    ```bash
-  pip install -r requirements.txt
+   pip install -r requirements.txt
 
-## Contributing
 
-Contributions are welcome! Please follow these steps to contribute to the project:
 
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
-3. Make your changes and commit them with a clear message.
-4. Push your changes to your fork.
-5. Create a pull request to the main branch of this repository.
