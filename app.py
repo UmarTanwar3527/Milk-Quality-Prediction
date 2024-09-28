@@ -45,7 +45,6 @@ def minor():
 
 def predict():
     
-     
     pH = float(request.args.get('pH'))
     Temprature = float(request.args.get('Temprature'))
     Taste = float(request.args.get('Taste'))
@@ -54,7 +53,6 @@ def predict():
     Turbidity = float(request.args.get('Turbidity'))
     Colour = float(request.args.get('Colour'))
 
- 
     Model = (request.args.get('Model'))
 
     if Model=="Random Forest Classifier":
